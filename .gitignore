@@ -9,7 +9,7 @@ tmp
 .env
 
 # The development sqlite file
-database/*.sqlite
+database/*.mysql
 
 # VSCode & Webstorm history directories
 .history

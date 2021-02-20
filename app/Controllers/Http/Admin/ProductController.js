@@ -7,12 +7,20 @@ class ProductController {
     index({view}){
         return view.render('admin/products/all')
     }
-    store({request, response}){
-        const post = request.post()
-        Database.raw(`INSERT INTO products (title, sku, material, description, brand_id, qty, size, user_id)
-        Values(${post.title}, ${post.sku}, ${post.material}, ${post.description}, 1, ${post.qty}, ${post.size}, 1)
-        `).then(response )
-        
+    async store({request, response}){
+
+        try {
+            const post = request.post()
+        await Database.raw(`INSERT INTO products (title, sku, material, description, brand_id, qty, size, user_id)
+        Values('${post.title}', '${post.sku}', '${post.material}', '${post.description}', 1, ${post.qty}, 1, 1)
+        `)
+        return `Saved Success`
+        } catch (error) {
+            console.log(error)
+            return `<h1>There was an error</h1>
+             <h3>${error.sqlMessage}</h3>
+             `
+        }
     }
     create({view}){
         return view.render('admin/products/create') 

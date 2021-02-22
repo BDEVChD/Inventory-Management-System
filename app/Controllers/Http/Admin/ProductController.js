@@ -46,6 +46,10 @@ class ProductController {
     create({view, request, response}){
         return view.render('admin/products/create') 
     }
+
+    async edit({view, request, response}){
+        return view.render('admin/products/edit') 
+    }
     async show({view, request, response, params}){
     
         try {
@@ -72,9 +76,7 @@ class ProductController {
             //  `
         }
     }
-    edit({view, request, response}){
-        return view.render('admin/products/edit')   
-    }
+    
     update({request, response}){
         return   
     }

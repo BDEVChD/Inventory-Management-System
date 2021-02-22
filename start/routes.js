@@ -24,13 +24,16 @@ Route.post('/admin/products', 'Admin/ProductController.store')  //POST
 
 
 Route.get('/admin/products/create', 'Admin/ProductController.create')
+Route.get('/admin/products/:id/edit', 'Admin/ProductController.edit')
 
 Route.get('/admin/products/create', 'Admin/ProductController.create')  //CREATE
 Route.get('/admin/products/:id', 'Admin/ProductController.show')  //SHOW
 Route.get('/admin/products/:id/:name', 'Admin/ProductController.show')  //SHOW
 
+
+Route.get('/admin/products/edit', 'Admin/ProductController.create')
 Route.get('/admin/products/:id/edit', 'Admin/ProductController.edit')  //EDIT
-Route.put('/admin/products/:id/edit', 'Admin/ProductController.update') //UPDATE submitting a FORM
+// Route.put('/admin/products/:id/edit', 'Admin/ProductController.update') //UPDATE submitting a FORM
 
 Route.get('/admin/products/:id/delete', 'Admin/ProductController.delete') //DELETE 
 

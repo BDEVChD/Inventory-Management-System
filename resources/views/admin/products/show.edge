@@ -21,25 +21,25 @@
                 <div class="row">
                     <div class="col-md-4">
                 
-                        <img src="https://static.highsnobiety.com/thumbor/YrYYFly8JGchIvbptqFis-_ObEM=/1600x1067/static.highsnobiety.com/wp-content/uploads/2018/08/17101756/kanye-west-adidas-yeezy-digital-archive-01.jpg" class="show-products-img" />
+                    <img src="{{product.img_url}}" class="show-products-img" />
         
                         </div>
                         <div class="col-md-8">
                         
-                            <h2>Title</h2>
-                            <p><span>Description: Typewriter aesthetic lyft yuccie. Hot chicken mlkshk you probably haven't heard of them, leggings echo park hashtag lumbersexual pitchfork distillery palo santo air plant williamsburg woke. Seitan organic offal 8-bit church-key bushwick, gochujang cold-pressed DIY listicle pug ennui. Fingerstache seitan gluten-free poutine whatever lomo. Craft beer butcher put a bird on it, semiotics messenger bag irony edison bulb leggings woke. Mumblecore yr tilde chicharrones. Sriracha tbh freegan cred scenester hot chicken. Organic helvetica distillery lo-fi whatever pabst chia celiac drinking vinegar tumblr. </span></p>
+                            <h2>{{product.title}}</h2>
+                            <p><span>{{product.description}} </span></p>
                             <div class="details row">
                                 <div class="col-md-3">
-                                    <h4>SKU</h4>   
+                                    <h4>{{product.sku}}</h4>   
                                     <span>23523662</span>
                                 </div>
                                 <div class="col-md-3">
                                     <h4>Material</h4>   
-                                    <span>23ewtte</span>
+                                    <span>{{product.material}}</span>
                                 </div>
                                 <div class="col-md-3">
                                     <h4>Brand</h4>   
-                                    <span>23523662</span>
+                                    <span>{{product.user}}</span>
                                 </div>
                                 <div class="col-md-3">
                                     <h4>Created By</h4>   
@@ -61,8 +61,8 @@
     <div class="col-md-3 mt-5">
         <div class="card">
             <div class="card-body">
-                <a href="/products/id/edit" class="btn btn-primary btn-lg btn-block">Edit <i class="fa-edit"></i></a>
-                <a href="/products/id/edit" class="btn btn btn-danger btn-lg btn-block">Delete <i class="ti-trash"></i></a>
+                <a href="/products/{{product.id}}/edit" class="btn btn-primary btn-lg btn-block">Edit <i class="ti-pencil-alt"></i></a>
+                <a href="/products/{{product.id}}/delete" onclick="return confirm('are you sure tho')" class="btn btn btn-danger btn-lg btn-block">Delete <i class="ti-trash"></i></a>
            
             </div>
         </div>

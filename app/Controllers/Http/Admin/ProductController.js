@@ -1,5 +1,6 @@
 'use strict'
 const Database = use('Database')
+const sanitize = require('sqlstring');
 
 class ProductController {
 
@@ -14,12 +15,15 @@ class ProductController {
         await Database.raw(`INSERT INTO products (title, sku, material, description, brand_id, qty, size, user_id)
         Values('${post.title}', '${post.sku}', '${post.material}', '${post.description}', 1, ${post.qty}, 1, 1)
         `)
-        return `Saved Success`
+        
+        return response.redirect('/admin/products')
         } catch (error) {
             console.log(error)
-            return `<h1>There was an error</h1>
-             <h3>${error.sqlMessage}</h3>
-             `
+            return response.redirect('back')
+            
+            // `<h1>There was an error</h1>
+            //  <h3>${error.sqlMessage}</h3>
+            //  `
         }
     }
     create({view}){

@@ -17,7 +17,6 @@
 const Route = use('Route')
 
 Route.get('/', 'PageController.index')
-
 Route.get('/admin', 'Admin/ProductController.index')
 Route.get('/admin/products', 'Admin/ProductController.index')  //GET
 Route.post('/admin/products', 'Admin/ProductController.store')  //POST 
@@ -36,5 +35,20 @@ Route.get('/admin/products/edit', 'Admin/ProductController.create')
 Route.get('/admin/products/:id/edit', 'Admin/ProductController.edit')  //EDIT
 Route.put('/admin/products/:id', 'Admin/ProductController.update') //UPDATE submitting a FORM
 
-//DELETE 
 
+
+//ADMIN BRANDS
+Route.get('/admin/brands', 'Admin/BrandController.index')
+Route.post('/admin/brands', 'Admin/BrandController.store')
+Route.get('/admin/brands/:id/delete', 'Admin/BrandController.delete') 
+Route.get('/admin/brands/create', 'Admin/BrandController.create')
+Route.get('/admin/brands/:id/edit', 'Admin/BrandController.edit')
+
+Route.get('/admin/brands/create', 'Admin/BrandController.create')  //CREATE
+Route.get('/admin/brands/:id', 'Admin/BrandController.show')  //SHOW
+Route.get('/admin/brands/:id/:name', 'Admin/BrandController.show')  //SHOW
+
+
+Route.get('/admin/brands/edit', 'Admin/BrandController.create')
+Route.get('/admin/brands/:id/edit', 'Admin/BrandController.edit')  //EDIT
+Route.put('/admin/brands/:id', 'Admin/BrandController.update') //UPDATE submitting a FORM

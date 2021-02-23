@@ -5,8 +5,10 @@ const Env = use('Env')
 
 /** @type {import('@adonisjs/ignitor/src/Helpers')} */
 const Helpers = use('Helpers')
+const url = require('url-parse')
+const DATABASE_URL = new url(Env.get('DATABASE_URL'))
 
-module.exports = {
+module.exports = { 
   /*
   |--------------------------------------------------------------------------
   | Default Connection

@@ -74,6 +74,20 @@ class ProductController {
             //  `
         }       
     }
+    async delete({request, response, params}){
+        try {
+            const id = params.id
+        await Database.raw(`
+        DELETE FROM products
+        WHERE id = ${id}
+        `)
+        return response.redirect('/admin/products')
+        } catch (error) {
+            console.log(error)
+            return response.redirect('back')
+            
+        }    
+    }
     async show({view, request, response, params}){
     
         try {
@@ -126,9 +140,7 @@ class ProductController {
             
         }  
     }
-    delete({request, response}){
-        return   
-    }
+    
 }
 
 module.exports = ProductController

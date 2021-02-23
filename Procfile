@@ -1,1 +1,1 @@
-web: node server.js
+web: adonis server.js

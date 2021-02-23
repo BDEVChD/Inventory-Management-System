@@ -7,7 +7,7 @@
     <ul class="breadcrumbs pull-left">
         <li><a href="/admin">Dashboard</a></li>
         <li><a href="/admin/products">All Products</a></li>
-        <li><span>Create New Product</span></li>
+        <li><span>{{product.title}}</span></li>
     </ul>
 </div>
 
@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <h4>Brand</h4>   
-                                    <span>{{product.user}}</span>
+                                    <span>{{product.brand}}</span>
                                 </div>
                                 <div class="col-md-3">
                                     <h4>Created By</h4>   
@@ -63,7 +63,7 @@
         <div class="card">
             <div class="card-body">
                 <a href="/admin/products/{{product.id}}/edit" class="btn btn-primary btn-lg btn-block">Edit <i class="ti-pencil-alt"></i></a>
-                <a href="/products/{{product.id}}/delete" onclick="return confirm('are you sure tho')" class="btn btn btn-danger btn-lg btn-block">Delete <i class="ti-trash"></i></a>
+                <a href="/admin/products/{{product.id}}/delete" onclick="return confirm('are you sure tho')" class="btn btn btn-danger btn-lg btn-block">Delete <i class="ti-trash"></i></a>
            
             </div>
         </div>

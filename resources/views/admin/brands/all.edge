@@ -33,7 +33,7 @@
                                 @each(brand in allBrands)
                                     <tr>                                 
                                     <th scope="row">{{brand.id}}</th>
-                                        <td><a href="/admin/brands/{{brand.id}}"><img src="{{brand.img_url}}"></a></td>
+                                        <td><a href="/admin/brands/{{brand.id}}"><img src="{{brand.img_url}}" style="width: 100%; max-width: 250px"></a></td>
                                    
                                         <td>
                                             {{brand.user}}

@@ -48,8 +48,6 @@ class ProductController {
     }
 
     async edit({view, request, response, params}){
-        // return view.render('admin/products/edit')
-        
         try {
             let product = await Database.raw(`
             SELECT products.id, products.title, products.sku, products.img_url, products.description, brands.title as brand, concat(users.f_name, ' ', users.l_name) as user, products.material, products.qty, products.size, products.user_id, products.created_at
@@ -69,10 +67,11 @@ class ProductController {
             console.log(error)
             return response.redirect('back')
             
-            // `<h1>There was an error</h1>
-            //  <h3>${error.sqlMessage}</h3>
-            //  `
-        }       
+            
+        }  
+      
+        
+           
     }
     async delete({request, response, params}){
         try {

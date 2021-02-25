@@ -53,3 +53,20 @@ Route.get('/admin/brands/:id/:name', 'Admin/BrandController.show')  //SHOW
 Route.get('/admin/brands/edit', 'Admin/BrandController.create')
 Route.get('/admin/brands/:id/edit', 'Admin/BrandController.edit')  //EDIT
 Route.put('/admin/brands/:id', 'Admin/BrandController.update') //UPDATE submitting a FORM
+
+// Orders
+Route.get('/admin/orders', 'Admin/OrderController.index')
+Route.post('/admin/orders', 'Admin/OrderController.store')
+Route.get('/admin/orders/:id/delete', 'Admin/OrderController.delete') 
+Route.get('/admin/orders/create', 'Admin/OrderController.create')
+Route.get('/admin/orders/:id/edit', 'Admin/OrderController.edit')
+
+Route.get('/admin/orders/create', 'Admin/OrderController.create')  //CREATE
+Route.get('/admin/orders/:id', 'Admin/OrderController.show')  //SHOW
+Route.get('/admin/orders/:id/:name', 'Admin/OrderController.show')  //SHOW
+
+
+Route.get('/admin/orders/edit', 'Admin/OrderController.create')
+Route.get('/admin/orders/:id/edit', 'Admin/OrderController.edit')  //EDIT
+Route.put('/admin/orders/:id', 'Admin/OrderController.update') //UPDATE submitting a FORM
+

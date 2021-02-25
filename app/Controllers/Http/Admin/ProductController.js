@@ -62,7 +62,18 @@ class ProductController {
         `)
         
         product = product[0][0]
-        return view.render('admin/products/edit', {product})
+
+
+        let brands= await Database.raw(`
+            SELECT * FROM brands
+            ORDER BY brands.title ASC
+            
+    `)
+            brands = brands[0]
+        
+
+
+        return view.render('admin/products/edit', {product, brands})
         } catch (error) {
             console.log(error)
             return response.redirect('back')
@@ -103,14 +114,15 @@ class ProductController {
         `)
         
         product = product[0][0]
+
+
+
         return view.render('admin/products/show', {product})
         } catch (error) {
             console.log(error)
             return response.redirect('back')
             
-            // `<h1>There was an error</h1>
-            //  <h3>${error.sqlMessage}</h3>
-            //  `
+            
         }
     }
     

@@ -67,9 +67,11 @@
              
                     <div class="col-sm-12 col-md-4">
                         <label class="col-form-label">Brands</label>
-                        <select class="custom-select">
+                        <select class="custom-select" name="brand_id">
                             @each(brand in brands)
-                        <option value="{{brand.id}}">{{brand.title}}</option>
+                        <option value="{{brand.id}}" 
+                        {{(brand.id == product.brand_id) ? 'selected="selected"' : ''  }}
+                        >{{brand.title}}</option>
                           
                             @endeach
                         </select>

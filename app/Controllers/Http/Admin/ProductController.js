@@ -20,9 +20,7 @@ class ProductController {
             console.log(error)
             return response.redirect('back')
             
-            // `<h1>There was an error</h1>
-            //  <h3>${error.sqlMessage}</h3>
-            //  `
+        
         }
       
     }
@@ -30,7 +28,7 @@ class ProductController {
         try {
             const post = request.post()
         await Database.raw(`INSERT INTO products (title, sku, img_url, material, description, brand_id, qty, size, user_id)
-        Values('${post.title}', '${post.sku}', '${post.img_url}','${post.material}', '${post.description}', 1, ${post.qty}, 1, 1)
+        Values('${post.title}', '${post.sku}', '${post.img_url}','${post.material}', '${post.description}', '${post.brand_id}', ${post.qty}, '${post.size}', 1)
         `)
         
         return response.redirect('/admin/products')
@@ -38,19 +36,23 @@ class ProductController {
             console.log(error)
             return response.redirect('back')
             
-            // `<h1>There was an error</h1>
-            //  <h3>${error.sqlMessage}</h3>
-            //  `
+        
         }
     }
-    create({view, request, response}){
-        return view.render('admin/products/create') 
+    async create({view, request, response}){
+        let brands= await Database.raw(`
+            SELECT * FROM brands
+            ORDER BY brands.title ASC
+            
+    `)
+            brands = brands[0]
+        return view.render('admin/products/create', {brands}) 
     }
 
     async edit({view, request, response, params}){
         try {
             let product = await Database.raw(`
-            SELECT products.id, products.title, products.sku, products.img_url, products.description, brands.title as brand, concat(users.f_name, ' ', users.l_name) as user, products.material, products.qty, products.size, products.user_id, products.created_at
+            SELECT products.id, products.title, products.sku, products.img_url, products.description, brands.title as brand, concat(users.f_name, ' ', users.l_name) as user, products.material, products.qty, products.size, products.user_id, products.brand_id, products.created_at
             FROM products
             INNER JOIN brands
             ON products.brand_id = brands.id
@@ -137,7 +139,7 @@ class ProductController {
         img_url =  '${post.img_url}',
         material = '${post.material}',
         description = '${post.description}', 
-        brand_id = 1, 
+        brand_id = '${post.brand_id}', 
         qty = ${post.qty},
         size = 1,
         user_id = 1

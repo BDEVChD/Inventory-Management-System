@@ -5,3 +5,13 @@
 #brands-show-page .details   {
     margin: 50px 0; 
 }
+
+#orders-create-page .order-items .item-img{
+    background: black; 
+    height: 200px;
+    width: 200px;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    margin: 0 auto; 
+}

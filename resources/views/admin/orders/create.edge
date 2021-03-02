@@ -14,43 +14,44 @@
 @endsection
 
 @section('content')
-<div class="row">
+<div id="orders-create-page" class="row">
     <div class="col-12 mt-5">
         <div class="card">
             <div class="card-body">
                 <div id="ordersForm"></div>
                 <form action="/admin/products" method="post"> 
                     {{ csrfField() }}
-                <div class="form-group">
-                    <label for="example-text-input" class="col-form-label">Title</label>
-                    <input class="form-control" type="text" value="" name="title" id="example-text-input">
-                </div>
-                <div class="form-group">
-                    <label for="example-text-input" class="col-form-label">Image URL</label>
-                    <input class="form-control" type="text" value="" name="img_url" id="example-text-input">
+                <div class="row form-group">
+                    <div class="col-sm-12 col-md-6">
+                        <label for="example-text-input" class="col-form-label">First Name</label>
+                        <input class="form-control" type="text" value="" name="f_name" id="example-text-input">
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <label for="example-text-input" class="col-form-label">Last Name</label>
+                        <input class="form-control" type="text" value="" name="l_name" id="example-text-input">
+                    </div>
                 </div>
                 <div class="form-group row">
 
                     <div class="col-sm-12 col-md-6">
-                        <label for="example-text-input" class="col-form-label">SKU</label>
-                        <input class="form-control" type="text" value="" name="sku" id="example-text-input">
+                        <label for="example-text-input" class="col-form-label">Address</label>
+                        <input class="form-control" type="text" value="" name="address" id="example-text-input">
                     </div>
-
-                    <div class="col-sm-12 col-md-6 ">
-                        <label for="example-text-input" class="col-form-label">Material</label>
-                        <input class="form-control" type="text" value="" name="material" id="example-text-input">
+                    <div class="col-sm-12 col-md-6">
+                        <label for="example-text-input" class="col-form-label">Address 2</label>
+                        <input class="form-control" type="text" value="" name="address_2" id="example-text-input">
                     </div>
 
                    
                 </div>
                 <div class="form-group row">
-                    <div class="col-sm-12 col-md-4">
-                        <label for="example-text-input" class="col-form-label">Quantity</label>
-                        <input class="form-control" type="text" value="" name="qty" id="example-text-input">
+                    <div class="col-sm-12 col-md-3">
+                        <label for="example-text-input" class="col-form-label">City</label>
+                        <input class="form-control" type="text" value="" name="city" id="example-text-input">
                     </div>
-                    <div class="col-sm-12 col-md-4 ">
-                        <label for="example-text-input" class="col-form-label">Size</label>
-                        <select class="custom-select" name="size">
+                    <div class="col-sm-12 col-md-3 ">
+                        <label for="example-text-input" class="col-form-label">State</label>
+                        <select class="custom-select" name="state">
                             <option value="7"selected="selected">7</option>
                             <option value="7.5">8</option>
                             <option value="8">8</option>
@@ -64,9 +65,20 @@
                     </div>
 
                   
-                    <div class="col-sm-12 col-md-4">
-                        <label class="col-form-label">Brands</label>
-                        <select class="custom-select" name="brand_id">
+                    <div class="col-sm-12 col-md-3">
+                        <label class="col-form-label">Country</label>
+                        <select class="custom-select" name="country">
+                            @each(brand in brands)
+                        <option value="{{brand.id}}" 
+                        {{(brand.id == product.brand_id) ? 'selected="selected"' : ''  }}
+                        >{{brand.title}}</option>
+                          
+                            @endeach
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-3">
+                        <label class="col-form-label">Payment Type</label>
+                        <select class="custom-select" name="payment_type">
                             @each(brand in brands)
                         <option value="{{brand.id}}" 
                         {{(brand.id == product.brand_id) ? 'selected="selected"' : ''  }}
@@ -76,9 +88,28 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="example-text-input" class="col-form-label">Description</label>
-                    <textarea class="form-control" name="description" rows="8" cols="80"></textarea>
+                <div class="row order-items">
+                    <div class="col-md-3">
+                        <div class="item-box">
+                            <div class="item-img" style="background: url('https://static.highsnobiety.com/thumbor/AQk2-bVasbmqFSHc9ksLkijpR5s=/1600x1067/static.highsnobiety.com/wp-content/uploads/2019/02/05165634/sneaker-sales-2018-stockx-main-01.jpg');"></div>
+                            <div class="title">
+                                sneaker title
+                            </div>
+                        </div>
+                      
+                    </div>
+                    <div class="col-md-3">
+                        <div class="item-box">
+                            <div class="item-delete">
+                                <i class="ti-close"></i>
+                            </div>
+                            <div class="add-item-button">
+                                
+                                Add New Item
+                            </div>
+                        </div>
+                      
+                    </div>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary mb-3">Submit</button>

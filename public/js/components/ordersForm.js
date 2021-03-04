@@ -16,7 +16,13 @@ var _reactDom = __webpack_require__(100);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _readAddonsUpdate = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"read-addons-update\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+var _readAddonsUpdate2 = _interopRequireDefault(_readAddonsUpdate);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -32,12 +38,27 @@ var Layout = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (Layout.__proto__ || Object.getPrototypeOf(Layout)).call(this));
 
+    _this.change = function (event) {
+      var name = event.target.name;
+      var value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+
+      _this.setState({
+        form: _defineProperty({}, name, value)
+
+      }, function () {
+        console.log(_this.state);
+      });
+    };
+
     _this.clickedBtn = function () {
       console.log('swag');
     };
 
     _this.state = {
-      name: 'Joe'
+      form: {
+        f_name: '',
+        l_name: ''
+      }
     };
     return _this;
   }
@@ -45,63 +66,311 @@ var Layout = function (_Component) {
   _createClass(Layout, [{
     key: 'render',
     value: function render() {
+
       return _react2.default.createElement(
-        'div',
-        { className: 'home' },
+        'form',
+        { action: '/admin/products', method: 'post' },
         _react2.default.createElement(
           'div',
-          { className: 'Aligner' },
+          { className: 'row form-group' },
           _react2.default.createElement(
             'div',
-            { className: 'Aligner-item' },
-            _react2.default.createElement('img', { src: '/img/logo.png' }),
+            { className: 'col-sm-12 col-md-6' },
             _react2.default.createElement(
-              'h1',
-              null,
-              'Starter-Kit-2k18'
+              'label',
+              { htmlFor: 'example-text-input', className: 'col-form-label' },
+              'First Name'
+            ),
+            _react2.default.createElement('input', { className: 'form-control', type: 'text', value: this.state.form.f_name, name: 'f_name', id: 'example-text-input', onChange: this.change })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'col-sm-12 col-md-6' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'example-text-input', className: 'col-form-label' },
+              'Last Name'
+            ),
+            _react2.default.createElement('input', { className: 'form-control', type: 'text', value: this.state.form.l_name, name: 'l_name', id: 'example-text-input', onChange: this.change })
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'form-group row' },
+          _react2.default.createElement(
+            'div',
+            { className: 'col-sm-12 col-md-6' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'example-text-input', className: 'col-form-label' },
+              'Address'
+            ),
+            _react2.default.createElement('input', { className: 'form-control', type: 'text', value: '', name: 'address', id: 'example-text-input' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'col-sm-12 col-md-6' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'example-text-input', className: 'col-form-label' },
+              'Address 2'
+            ),
+            _react2.default.createElement('input', { className: 'form-control', type: 'text', name: 'address_2', id: 'example-text-input' })
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'form-group row' },
+          _react2.default.createElement(
+            'div',
+            { className: 'col-sm-12 col-md-3' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'example-text-input', className: 'col-form-label' },
+              'City'
+            ),
+            _react2.default.createElement('input', { className: 'form-control', type: 'text', defaultValue: true, name: 'city', id: 'example-text-input' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'col-sm-12 col-md-3 ' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'example-text-input', className: 'col-form-label' },
+              'State'
             ),
             _react2.default.createElement(
-              'div',
-              { className: 'menu' },
+              'select',
+              { className: 'custom-select', name: 'state' },
               _react2.default.createElement(
-                'ul',
-                null,
+                'option',
+                { value: 7 },
+                '7'
+              ),
+              _react2.default.createElement(
+                'option',
+                { value: '7.5' },
+                '8'
+              ),
+              _react2.default.createElement(
+                'option',
+                { value: 8 },
+                '8'
+              ),
+              _react2.default.createElement(
+                'option',
+                { value: '8.5' },
+                '8.5'
+              ),
+              _react2.default.createElement(
+                'option',
+                { value: 9 },
+                '9'
+              ),
+              _react2.default.createElement(
+                'option',
+                { value: '9.5' },
+                '9.5'
+              ),
+              _react2.default.createElement(
+                'option',
+                { value: 10 },
+                '10'
+              ),
+              _react2.default.createElement(
+                'option',
+                { value: '10.5' },
+                '10.5'
+              ),
+              _react2.default.createElement(
+                'option',
+                { value: 11 },
+                '11'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'col-sm-12 col-md-3' },
+            _react2.default.createElement(
+              'label',
+              { className: 'col-form-label' },
+              'Country'
+            ),
+            _react2.default.createElement(
+              'select',
+              { className: 'custom-select', name: 'country' },
+              _react2.default.createElement(
+                'option',
+                { value: '' },
+                'country'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'col-sm-12 col-md-3' },
+            _react2.default.createElement(
+              'label',
+              { className: 'col-form-label' },
+              'Payment Type'
+            ),
+            _react2.default.createElement(
+              'select',
+              { className: 'custom-select', name: 'payment_type' },
+              _react2.default.createElement(
+                'option',
+                { value: 'paypal' },
+                'PayPal'
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'row order-items' },
+          _react2.default.createElement(
+            'div',
+            { className: 'col-md-12' },
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Order Items'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'col-md-3' },
+            _react2.default.createElement(
+              'div',
+              { className: 'item-box' },
+              _react2.default.createElement(
+                'div',
+                { className: 'item-img', style: { background: 'url("https://static.highsnobiety.com/thumbor/AQk2-bVasbmqFSHc9ksLkijpR5s=/1600x1067/static.highsnobiety.com/wp-content/uploads/2019/02/05165634/sneaker-sales-2018-stockx-main-01.jpg")' } },
                 _react2.default.createElement(
                   'div',
-                  { onClick: this.clickedBtn },
-                  'clickked this'
+                  { className: 'item-delete' },
+                  _react2.default.createElement('i', { className: 'ti-close' })
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'title' },
+                'Sneaker Title'
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'quantity' },
+                _react2.default.createElement(
+                  'label',
+                  { className: 'col-form-label' },
+                  'Quantity'
                 ),
                 _react2.default.createElement(
-                  'li',
+                  'h4',
                   null,
-                  _react2.default.createElement(
-                    'a',
-                    { href: 'http://starterkit.codingphase.com', target: 'new' },
-                    'Documentation'
-                  )
-                ),
+                  '4 '
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'col-md-3' },
+            _react2.default.createElement(
+              'div',
+              { className: 'item-box' },
+              _react2.default.createElement(
+                'div',
+                { className: 'add-item-button' },
                 _react2.default.createElement(
-                  'li',
+                  'span',
                   null,
+                  '+'
+                ),
+                ' Add new Item'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'col-md-3' },
+            _react2.default.createElement(
+              'div',
+              { className: 'popup' },
+              _react2.default.createElement(
+                'div',
+                { className: 'container-box' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'row' },
                   _react2.default.createElement(
-                    'a',
-                    { href: 'http://www.codingphase.com', target: 'new' },
-                    'CodingPhase.Com'
+                    'div',
+                    { className: 'col-md-12' },
+                    _react2.default.createElement(
+                      'h2',
+                      null,
+                      'Add Item to Order'
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'form-group' },
+                      _react2.default.createElement(
+                        'label',
+                        { htmlFor: true, className: 'col-form-label' },
+                        'Product'
+                      ),
+                      _react2.default.createElement(
+                        'select',
+                        { className: 'custom-select', name: 'product' },
+                        _react2.default.createElement(
+                          'option',
+                          { value: 0 },
+                          'title / quantity'
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'form-group' },
+                      _react2.default.createElement(
+                        'label',
+                        { htmlFor: true, className: 'col-form-label' },
+                        'Quantity'
+                      ),
+                      _react2.default.createElement(
+                        'select',
+                        { className: 'custom-select', name: 'qty' },
+                        _react2.default.createElement(
+                          'option',
+                          { value: 0 },
+                          '1'
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'add-btn btn btn-primary mb-3' },
+                      'save item'
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'add-btn btn btn-primary mb-3' },
+                      'cancel'
+                    )
                   )
                 )
               )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'version-num' },
-              'version 2.0.18'
-            ),
-            _react2.default.createElement('br', null),
-            _react2.default.createElement(
-              'a',
-              { className: 'github-button', href: 'https://github.com/codingphasedotcom/Starter-Kit-2018', 'data-icon': 'octicon-star', 'data-style': 'mega', 'data-count-href': '/codingphasedotcom/rocky/stargazers', 'data-count-api': '/repos/codingphasedotcom/rocky#stargazers_count', 'data-count-aria-label': '# stargazers on GitHub', 'aria-label': 'Star codingphasedotcom/rocky on GitHub' },
-              'Star'
             )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'form-group' },
+          _react2.default.createElement(
+            'button',
+            { type: 'submit', className: 'btn btn-primary mb-3' },
+            'Submit'
           )
         )
       );

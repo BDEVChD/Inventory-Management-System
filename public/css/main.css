@@ -86,3 +86,54 @@
     font-size: 4rem; 
 }
 
+
+
+
+#orders-create-page .popup {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    height: 100vh; 
+    width: 100%; 
+    z-index: 1000; 
+    background: rgba(0,0,0,0.8);
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    visibility: hidden; 
+    opacity: 0; 
+    transition: all .4s ease-in-out;
+
+}
+
+
+#orders-create-page .popup.active {
+  
+    visibility: visible; 
+    opacity: 1; 
+
+}
+
+#orders-create-page .popup .container-box{
+    width: 400px; 
+    padding: 20px; 
+    background: white;
+    border-radius: 4px;
+
+}
+
+#orders-create-page .popup .container-box .add-btn{
+   color: white; 
+   padding: 10px 20px; 
+   margin: 20px 0; 
+   cursor: pointer; 
+
+}
+
+#orders-create-page .popup .container-box .add-btn{
+    color: white; 
+    padding: 10px 20px; 
+    margin: 20px 0 0; 
+    cursor: pointer; 
+ 
+ }
